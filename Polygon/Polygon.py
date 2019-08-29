@@ -6,3 +6,17 @@ class Polygon:
     def __init__(self, point_array):
         self.points = point_array
 
+    def __repr__(self):
+        return str(self.points)
+
+    def __getitem__(self, key):
+        return self.points[key]
+
+    def __setitem__(self, key, value):
+        self.points[key] = value
+
+    def __len__(self):
+        return len(self.points)
+
+
+
