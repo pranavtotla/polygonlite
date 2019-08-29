@@ -15,3 +15,10 @@ def dot(a, b):
 def det(a, b):
     return a[0] * b[1] - a[1] * b[0]
 
+
+def orientation(p, q, r):
+    val = (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y)
+    if val == 0: return 0  # Collinear
+    if val > 0: return 1  # Clockwise
+    return 2  # Anti clockwise
+
