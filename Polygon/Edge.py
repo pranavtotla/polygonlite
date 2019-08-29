@@ -47,3 +47,5 @@ class Edge:
                 return True
         return False
 
+    def __len__(self):
+        return 2
