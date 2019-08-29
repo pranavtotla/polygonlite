@@ -56,3 +56,6 @@ class Edge:
         if (key == 1) or (key == 'point2') or (key == 'pt2'):
             return self.point2
         raise KeyError('Invalid key: %s. Valid keys are 0, 1, "point1", "point2", "pt1" or "pt2"' % key)
+
+    def __repr__(self):
+        return str([self.point1, self.point2])
