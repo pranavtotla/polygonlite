@@ -8,3 +8,6 @@ class Edge:
 
     def length(self):
         return math.sqrt(((self.point2.x - self.point1.x) ** 2) + ((self.point2.y - self.point1.y) ** 2))
+
+    def vector(self):
+        return self.point2 - self.point1
