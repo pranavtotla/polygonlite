@@ -31,3 +31,9 @@ class Point:
 
     def __ne__(self, other):
         return not self.__eq__(other)
+
+    def __add__(self, other):
+        return self.__class__([self[0] + other[0], self[1] + other[1]])
+
+    def __sub__(self, other):
+        return self.__class__([self[0] - other[0], self[1] - other[1]])
