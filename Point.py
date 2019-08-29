@@ -16,6 +16,9 @@ class Point:
             self.y = kwargs.get('y')
             self.point = [self.x, self.y]
 
+    def __repr__(self):
+        return str([self.x, self.y])
+
     def __getitem__(self, key):
         if (key == 0) or (key == 'x'):
             return self.x
