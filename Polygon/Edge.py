@@ -1,6 +1,6 @@
 import math
 from .Point import Point, THRESHOLD
-from .Services import dot, is_between
+from .Services import dot, det, is_between
 
 
 class Edge:
@@ -46,6 +46,15 @@ class Edge:
             if is_between(self.point1.y, point.y, self.point2.y):
                 return True
         return False
+
+    def intersect(self, other):
+        div = det(self.vector(), other.vector())
+        if div == 0:
+            return None
+        d = (det(self.point1, self.point2), det(other.point1, other.point2))
+        x = det(d, self.vector()) / div
+        y = det(d, other.vector()) / div
+        return Point(x, y)
 
     def __len__(self):
         return 2
