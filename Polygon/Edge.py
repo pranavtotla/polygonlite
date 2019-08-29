@@ -1,5 +1,5 @@
 import math
-from Polygon.Point import Point
+from Polygon.Point import Point, THRESHOLD
 
 
 class Edge:
@@ -13,3 +13,7 @@ class Edge:
     def vector(self):
         return Point(self.point2 - self.point1)
 
+    def slope(self):
+        if self.point2.x - self.point1.x < THRESHOLD:
+            return 'inf'
+        return (self.point2.y - self.point1.y) / (self.point2.x - self.point1.x)
