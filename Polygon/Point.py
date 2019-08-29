@@ -1,4 +1,5 @@
 THRESHOLD = 0.000001
+from Polygon.Services import dot
 
 
 class Point:
@@ -66,3 +67,6 @@ class Point:
 
     def __div__(self, other):
         return self.__class__([self.x / float(other), self.y / float(other)])
+
+    def __len__(self):
+        return 2
