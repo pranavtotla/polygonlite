@@ -44,13 +44,13 @@ class Point:
         return not self.__eq__(other)
 
     def __add__(self, other):
-        return self.__class__([self[0] + other[0], self[1] + other[1]])
+        return self.__class__([self.x + other.x, self.y + other.y])
 
     def __sub__(self, other):
-        return self.__class__([self[0] - other[0], self[1] - other[1]])
+        return self.__class__([self.x - other.x, self.y - other.y])
 
     def __mul__(self, other):
-        return self.__class__([self[0] * other, self[1] * other])
+        return self.__class__([self.x * other, self.y * other])
 
     def __div__(self, other):
-        return self.__class__([self[0] / float(other), self[1] / float(other)])
+        return self.__class__([self.x / float(other), self.y / float(other)])
