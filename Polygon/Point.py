@@ -1,5 +1,6 @@
-THRESHOLD = 0.000001
 from .Services import dot
+import math
+THRESHOLD = 0.000001
 
 
 class Point:
@@ -25,6 +26,9 @@ class Point:
 
     def sum(self):
         return self.x + self.y
+
+    def distance(self, other):
+        return math.sqrt((self - other).square().sum())
 
     def project(self, edge):
         vector = edge.unit_vector()
