@@ -43,6 +43,9 @@ class Point:
     def __ne__(self, other):
         return not self.__eq__(other)
 
+    def __neg__(self):
+        return self.__class__(-self.x, -self.y)
+
     def __add__(self, other):
         return self.__class__([self.x + other.x, self.y + other.y])
 
