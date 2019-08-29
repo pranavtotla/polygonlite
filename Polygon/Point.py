@@ -19,6 +19,9 @@ class Point:
     def clone(self):
         return Point(self.x, self.y)
 
+    def square(self):
+        return self.__class__(self.x * self.x, self.y * self.y)
+
     def __repr__(self):
         return str([self.x, self.y])
 
