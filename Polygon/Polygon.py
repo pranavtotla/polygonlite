@@ -6,6 +6,9 @@ class Polygon:
     def __init__(self, point_array):
         self.points = point_array
 
+    def flip(self):
+        return self.__class__(self.points[::-1])
+
     def __repr__(self):
         return str(self.points)
 
