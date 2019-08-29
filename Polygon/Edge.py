@@ -1,6 +1,6 @@
 import math
 from Polygon.Point import Point, THRESHOLD
-from Polygon.Services import dot
+from Polygon.Services import dot, is_between
 
 
 class Edge:
@@ -40,3 +40,10 @@ class Edge:
         if (self.slope() - other.slope()) < THRESHOLD:
             return True
         return False
+
+    def is_between(self, point):
+        if is_between(self.point1.x, point.x, self.point2.x):
+            if is_between(self.point1.y, point.y, self.point2.y):
+                return True
+        return False
+
