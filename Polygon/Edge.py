@@ -1,5 +1,5 @@
 import math
-from Polygon.Point import Point, THRESHOLD
+from .Point import Point, THRESHOLD
 from .Services import dot, is_between
 
 
