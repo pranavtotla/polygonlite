@@ -1,6 +1,6 @@
 import math
 from Polygon.Point import Point, THRESHOLD
-from Polygon.Services import dot, is_between
+from .Services import dot, is_between
 
 
 class Edge:

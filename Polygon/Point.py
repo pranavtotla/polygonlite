@@ -1,5 +1,5 @@
 THRESHOLD = 0.000001
-from Polygon.Services import dot
+from .Services import dot
 
 
 class Point:
