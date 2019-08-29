@@ -1,5 +1,6 @@
 THRESHOLD = 0.000001
 
+
 class Point:
     def __init__(self, *args, **kwargs):
         if len(args) == 1:
@@ -37,3 +38,9 @@ class Point:
 
     def __sub__(self, other):
         return self.__class__([self[0] - other[0], self[1] - other[1]])
+
+    def __mul__(self, other):
+        return self.__class__([self[0] * other, self[1] * other])
+
+    def __div__(self, other):
+        return self.__class__([self[0] / float(other), self[1] / float(other)])
