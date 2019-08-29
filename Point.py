@@ -26,6 +26,13 @@ class Point:
             return self.y
         raise KeyError('Invalid key: %s. Valid keys are 0, 1, "x" and "y"' % key)
 
+    def __setitem__(self, key, value):
+        if (key == 0) or (key == 'x'):
+            self.x = value
+        elif (key == 1) or (key == 'y'):
+            self.y = value
+        raise KeyError('Invalid key: %s. Valid keys are 0, 1, "x" and "y"' % key)
+
     def __eq__(self, other):
         if not isinstance(other, Point): return False
         if (self.x - other.x) < THRESHOLD:
