@@ -35,3 +35,8 @@ class Edge:
         if radians:
             return math.acos(normalized_product)
         return math.acos(normalized_product) * 180 / math.pi
+
+    def is_parallel(self, other):
+        if (self.slope() - other.slope()) < THRESHOLD:
+            return True
+        return False
