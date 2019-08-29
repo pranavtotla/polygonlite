@@ -22,6 +22,9 @@ class Point:
     def square(self):
         return self.__class__(self.x * self.x, self.y * self.y)
 
+    def sum(self):
+        return self.x + self.y
+
     def __repr__(self):
         return str([self.x, self.y])
 
