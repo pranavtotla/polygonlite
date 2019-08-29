@@ -28,3 +28,6 @@ class Point:
             if (self.y - other.y) < THRESHOLD:
                 return True
         return False
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
