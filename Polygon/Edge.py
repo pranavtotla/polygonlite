@@ -13,6 +13,9 @@ class Edge:
     def vector(self):
         return Point(self.point2 - self.point1)
 
+    def unit_vector(self):
+        return self.vector() / self.length()
+
     def slope(self):
         if self.point2.x - self.point1.x < THRESHOLD:
             return 'inf'
