@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='polygon-lite',
-    version='0.0.2',
+    version='0.0.4',
     packages=['Polygon'],
     url='https://github.com/pranavtotla/polygon-lite',
     license='MIT',
