@@ -26,6 +26,11 @@ class Point:
     def sum(self):
         return self.x + self.y
 
+    def project(self, edge):
+        vector = edge.unit_vector()
+        edge_to_point = self - edge.point1
+        return edge.point1 + (vector * dot(edge_to_point, vector))
+
     def __repr__(self):
         return str([self.x, self.y])
 
