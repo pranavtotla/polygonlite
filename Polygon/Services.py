@@ -1,0 +1,1 @@
+dot = lambda X, Y: sum(map(lambda x, y: x * y, X, Y))
