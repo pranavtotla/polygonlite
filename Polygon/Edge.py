@@ -49,3 +49,10 @@ class Edge:
 
     def __len__(self):
         return 2
+
+    def __getitem__(self, key):
+        if (key == 0) or (key == 'point1') or (key == 'pt1'):
+            return self.point1
+        if (key == 1) or (key == 'point2') or (key == 'pt2'):
+            return self.point2
+        raise KeyError('Invalid key: %s. Valid keys are 0, 1, "point1", "point2", "pt1" or "pt2"' % key)
