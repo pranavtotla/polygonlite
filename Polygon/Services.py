@@ -8,4 +8,6 @@ def is_between(number1, number2, number3):
     return False
 
 
-dot = lambda X, Y: sum(map(lambda x, y: x * y, X, Y))
+def dot(a, b):
+    return sum([a[i] * b[i] for i in range(len(b))])
+
