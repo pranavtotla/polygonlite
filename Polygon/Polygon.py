@@ -10,6 +10,14 @@ class Polygon:
     def flip(self):
         return self.__class__(self.points[::-1])
 
+    def remove_duplicates(self):
+        new_points = []
+        for i in range(len(self.points)):
+            new_points.append(self.points[i])
+            if self.points[i] == self.points[(i + 1) % len(self.points)]:
+                i += 1
+        self.points = new_points
+
     def is_clockwise(self):
         if orientation(self.points[0], self.points[1], self.points[2]) == 1:
             return True
