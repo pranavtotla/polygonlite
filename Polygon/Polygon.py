@@ -1,5 +1,6 @@
 from .Point import Point
 from .Edge import Edge
+from .Services import orientation
 
 
 class Polygon:
@@ -8,6 +9,11 @@ class Polygon:
 
     def flip(self):
         return self.__class__(self.points[::-1])
+
+    def is_clockwise(self):
+        if orientation(self.points[0], self.points[1], self.points[2]) == 1:
+            return True
+        return False
 
     def __repr__(self):
         return str(self.points)
