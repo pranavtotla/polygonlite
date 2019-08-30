@@ -5,7 +5,7 @@ from .Services import orientation
 
 class Polygon:
     def __init__(self, point_array):
-        self.points = point_array
+        self.points = [Point(point) for point in point_array]
 
     def flip(self):
         return self.__class__(self.points[::-1])
