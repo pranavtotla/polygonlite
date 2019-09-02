@@ -27,6 +27,11 @@ class Polygon:
             return True
         return False
 
+    def is_anticlockwise(self):
+        if orientation(self.points[0], self.points[1], self.points[2]) == 2:
+            return True
+        return False
+
     def __repr__(self):
         return str(self.points)
 
