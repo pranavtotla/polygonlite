@@ -10,12 +10,16 @@ class Polygon:
     def flip(self):
         return self.__class__(self.points[::-1])
 
-    def remove_duplicates(self):
-        new_points = []
+    def simplify(self):
+        def are_collinear(x, y, z):
+            if (x.x * (y.y - z.y) + y.x * (z.y - x.y) + z.x * (x.y - y.y)) == 0:
+                return True
+            return False
+
+        new_points = self.points[:]
         for i in range(len(self.points)):
-            new_points.append(self.points[i])
-            if self.points[i] == self.points[(i + 1) % len(self.points)]:
-                i += 1
+            if are_collinear(new_points[(i - 1) % len(new_points)], new_points[i], new_points[(i + 1) % len(new_points)]):
+                del new_points[i]
         self.points = new_points
 
     def is_clockwise(self):
