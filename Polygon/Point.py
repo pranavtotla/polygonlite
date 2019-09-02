@@ -4,7 +4,20 @@ THRESHOLD = 0.000001
 
 
 class Point:
+    """
+    Class for Points.
+
+    A Point p can be accessed in various ways:
+    1. p[0], p[1]
+    2. p.x, p.y
+    3. p['x'], p['y']
+    """
     def __init__(self, *args, **kwargs):
+        """
+        Create a new Point object.
+        :param args:
+        :param kwargs:
+        """
         if len(args) == 1:
             self.point = args[0]
             self.x = self.point[0]
@@ -19,18 +32,50 @@ class Point:
             self.point = [self.x, self.y]
 
     def clone(self):
+        """
+        Returns a new Point object with same parameters as the point.
+        :return: Point
+        """
         return Point(self.x, self.y)
 
     def square(self):
+        """
+        Returns a new Point object which has squared x and squared y values.
+        For example:
+        (2,5) -> (4,25)
+        (-2,5) -> (4,25)
+        :return: Point
+        """
         return self.__class__(self.x * self.x, self.y * self.y)
 
     def sum(self):
+        """
+        Returns the sum of parameters of x and y of the Point object.
+        For example:
+        (1,2) -> 3
+        (-1,0) -> -1
+        :return:
+        """
         return self.x + self.y
 
     def distance(self, other):
+        """
+        Returns the distance between two points.
+        For example:
+
+        distance between (0,2) and (0,5) is 3.
+
+        :param other: Point
+        :return: float
+        """
         return math.sqrt((self - other).square().sum())
 
     def project(self, edge):
+        """
+        Projects the point on a given Edge.
+        :param edge: Edge
+        :return: Point
+        """
         vector = edge.unit_vector()
         edge_to_point = self - edge.point1
         return edge.point1 + (vector * dot(edge_to_point, vector))
