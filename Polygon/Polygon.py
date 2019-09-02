@@ -32,6 +32,18 @@ class Polygon:
             return True
         return False
 
+    def max_x(self):
+        return max(point.x for point in self.points)
+
+    def min_x(self):
+        return min(point.x for point in self.points)
+
+    def max_y(self):
+        return max(point.y for point in self.points)
+
+    def min_y(self):
+        return min(point.y for point in self.points)
+
     def __repr__(self):
         return str(self.points)
 
