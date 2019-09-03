@@ -18,7 +18,8 @@ class Polygon:
 
         new_points = self.points[:]
         for i in range(len(self.points)):
-            if are_collinear(new_points[(i - 1) % len(new_points)], new_points[i], new_points[(i + 1) % len(new_points)]):
+            print (i - 1) % len(new_points), i,  (i + 1) % len(new_points)
+            if are_collinear(new_points[(i - 1) % len(new_points)], new_points[i % len(new_points)], new_points[(i + 1) % len(new_points)]):
                 del new_points[i]
         self.points = new_points
 
@@ -31,6 +32,21 @@ class Polygon:
         if orientation(self.points[0], self.points[1], self.points[2]) == 2:
             return True
         return False
+
+    def contains(self, point):
+        infinity = Point(self.max_x() + 1, point.y)
+        count = 0
+
+        for i in range(len(self.points)):
+            edge = Edge(self.points[i], self.points[(i + 1) % len(self.points)])
+            ray = Edge(point, infinity)
+
+            if ray.intersect(edge):
+                if orientation(edge[0], point, edge[1]) == 0:  # Points are collinear
+                    return edge.on_segment(point)
+                count += 1
+
+        return count % 2 == 1
 
     def max_x(self):
         return max(point.x for point in self.points)
