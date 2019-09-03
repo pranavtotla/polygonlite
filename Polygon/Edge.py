@@ -35,11 +35,19 @@ class Edge:
         return self.vector() / self.length()
 
     def slope(self):
+        """
+        Returns the slope of the line made by the edge, returns "inf" if slope is infinity.
+        :return: union([float, string])
+        """
         if self.point2.x - self.point1.x < THRESHOLD:
             return 'inf'
         return (self.point2.y - self.point1.y) / (self.point2.x - self.point1.x)
 
     def y_intercept(self):
+        """
+        Returns the y intercept formed by the line defined by the edge. Returns 'inf' line is parallel to y axis.
+        :return: union([float, string])
+        """
         if self.slope() == 'inf':
             return 'inf'
         return (-self.slope() * self.point1.x) + self.point1.y
