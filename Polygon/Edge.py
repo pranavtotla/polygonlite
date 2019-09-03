@@ -4,14 +4,31 @@ from .Services import dot, det, is_between
 
 
 class Edge:
+    """
+    Class for Edges. Edges can be thought of as line segments too. In simple terms, an edge is a connection between
+    two points. Thus, simplistically, it can be represented as a list of two points.
+
+    An Edge e can be accessed in various ways:
+    1. e[0], e[1]
+    2. e.point1, e.point2
+    3. e['point1'], e['point2']
+    """
     def __init__(self, point1, point2):
         self.point1 = Point(point1)
         self.point2 = Point(point2)
 
     def length(self):
+        """
+        Returns the length of the Edge.
+        :return: float
+        """
         return math.sqrt(self.vector().square().sum())
 
     def vector(self):
+        """
+        Returns the vector representation of the Edge.
+        :return: Point
+        """
         return Point(self.point2 - self.point1)
 
     def unit_vector(self):
@@ -51,7 +68,6 @@ class Edge:
         # return point.x <= max(self.point1.x, self.point2.x) and point.x >= min(self.point1.x, self.point2.x) and point.y <= max(self.point1.y, self.point2.y) and point.y >= min(self.point1.y, self.point2.y)
         # return max(self.point1.x, self.point2.x) >= point.x >= min(self.point1.x, self.point2.x) and point.y <= max(self.point1.y, self.point2.y) and point.y >= min(self.point1.y, self.point2.y)
         return max(self.point1.x, self.point2.x) >= point.x >= min(self.point1.x, self.point2.x) and max(self.point1.y,self.point2.y) >= point.y >= min(self.point1.y, self.point2.y)
-
 
     def __len__(self):
         return 2
