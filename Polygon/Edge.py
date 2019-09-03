@@ -52,14 +52,6 @@ class Edge:
         # return max(self.point1.x, self.point2.x) >= point.x >= min(self.point1.x, self.point2.x) and point.y <= max(self.point1.y, self.point2.y) and point.y >= min(self.point1.y, self.point2.y)
         return max(self.point1.x, self.point2.x) >= point.x >= min(self.point1.x, self.point2.x) and max(self.point1.y,self.point2.y) >= point.y >= min(self.point1.y, self.point2.y)
 
-    def intersect(self, other):
-        div = det(self.vector(), other.vector())
-        if div == 0:
-            return None
-        d = (det(self.point1, self.point2), det(other.point1, other.point2))
-        x = det(d, self.vector()) / div
-        y = det(d, other.vector()) / div
-        return Point(x, y)
 
     def __len__(self):
         return 2
