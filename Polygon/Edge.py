@@ -39,6 +39,13 @@ class Edge:
             return 'inf'
         return (self.point2.y - self.point1.y) / (self.point2.x - self.point1.x)
 
+    def y_intercept(self):
+        if self.slope() == 'inf':
+            return 'inf'
+        return (-self.slope() * self.point1.x) + self.point1.y
+
+
+
     def midpoint(self):
         return (self.point1 + self.point2) / 2
 
