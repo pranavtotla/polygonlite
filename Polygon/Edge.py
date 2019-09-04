@@ -109,6 +109,20 @@ class Edge:
         # return max(self.point1.x, self.point2.x) >= point.x >= min(self.point1.x, self.point2.x) and point.y <= max(self.point1.y, self.point2.y) and point.y >= min(self.point1.y, self.point2.y)
         return max(self.point1.x, self.point2.x) >= point.x >= min(self.point1.x, self.point2.x) and max(self.point1.y,self.point2.y) >= point.y >= min(self.point1.y, self.point2.y)
 
+    def intersect(self, other):
+        """
+        Returns the intersection point of two edges (line segments, not lines).
+        Returns 'collinear' if the edges are collinear (again, line segments, not lines)
+        Returns None if the edges are parallel.
+        :param other: Edge
+        :return: union(Point, string, None)
+        """
+        intersection = self.intersect_lines(self, other)
+        if intersection:
+            return intersection
+        if self.on_segment(other.point1) or self.on_segment(other.point2):
+            return 'collinear'
+        return None
 
     @staticmethod
     def intersect_lines(line1, line2):
