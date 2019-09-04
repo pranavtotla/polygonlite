@@ -117,11 +117,12 @@ class Edge:
         :param other: Edge
         :return: union(Point, string, None)
         """
-        intersection = self.intersect_lines(self, other)
-        if intersection:
-            return intersection
         if self.on_segment(other.point1) or self.on_segment(other.point2):
             return 'collinear'
+        intersection = self.intersect_lines(self, other)
+        if intersection:
+            if self.on_segment(intersection):
+                return Point(intersection)
         return None
 
     @staticmethod
