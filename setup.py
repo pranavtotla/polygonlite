@@ -1,9 +1,9 @@
 from setuptools import setup
 
 setup(
-    name='polygon-lite',
-    version='0.0.4',
-    packages=['Polygon'],
+    name='polygonlite',
+    version='0.0.5',
+    packages=['polygonlite'],
     url='https://github.com/pranavtotla/polygon-lite',
     license='MIT',
     author='Pranav Totla',
