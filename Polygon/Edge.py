@@ -55,6 +55,15 @@ class Edge:
     def line_coeff(self):
         return {'slope': self.slope(), 'y_intercept': self.y_intercept()}
 
+    def _y_for_x(self, x):
+        """
+        Returns the y value for some input x value considering the line formed by the edge.
+        :param x: float
+        :return: float
+        """
+        return self.slope() * x + self.y_intercept()
+
+
     def midpoint(self):
         return (self.point1 + self.point2) / 2
 
