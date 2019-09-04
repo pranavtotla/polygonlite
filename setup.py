@@ -15,4 +15,5 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 2',
     ],
+    download_url='https://github.com/pranavtotla/polygon-lite/archive/v0.0.5.tar.gz'
 )
