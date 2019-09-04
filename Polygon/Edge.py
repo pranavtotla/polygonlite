@@ -109,6 +109,39 @@ class Edge:
         # return max(self.point1.x, self.point2.x) >= point.x >= min(self.point1.x, self.point2.x) and point.y <= max(self.point1.y, self.point2.y) and point.y >= min(self.point1.y, self.point2.y)
         return max(self.point1.x, self.point2.x) >= point.x >= min(self.point1.x, self.point2.x) and max(self.point1.y,self.point2.y) >= point.y >= min(self.point1.y, self.point2.y)
 
+
+    @staticmethod
+    def intersect_lines(line1, line2):
+        """
+        Gives the intersection point of the two lines
+        :param line1: Edge
+        :param line2: Edge
+        :return: union(Point, None)
+        """
+        def coeffs(p1, p2):
+            A = (p1[1] - p2[1])
+            B = (p2[0] - p1[0])
+            C = (p1[0] * p2[1] - p2[0] * p1[1])
+            return A, B, -C
+
+        def intersection(equation1, equation2):
+            D = equation1[0] * equation2[1] - equation1[1] * equation2[0]
+            Dx = equation1[2] * equation2[1] - equation1[1] * equation2[2]
+            Dy = equation1[0] * equation2[2] - equation1[2] * equation2[0]
+            if D != 0:
+                x = Dx / D
+                y = Dy / D
+                return x, y
+            else:
+                return False
+
+        eq1 = coeffs(line1[0], line1[1])
+        eq2 = coeffs(line2[0], line2[1])
+        solution = intersection(eq1, eq2)
+        if solution:
+            return Point(solution)
+        return None
+
     def __len__(self):
         return 2
 
