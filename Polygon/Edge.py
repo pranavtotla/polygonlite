@@ -61,6 +61,8 @@ class Edge:
         :param x: float
         :return: float
         """
+        if self.slope() == 'inf':
+            return None
         return self.slope() * x + self.y_intercept()
 
     def _x_for_y(self, y):
@@ -69,6 +71,8 @@ class Edge:
         :param y: float
         :return: float
         """
+        if self.slope() == 0:
+            return None
         return (y - self.y_intercept()) / float(self.slope())
 
 
