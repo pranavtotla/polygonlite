@@ -63,6 +63,14 @@ class Edge:
         """
         return self.slope() * x + self.y_intercept()
 
+    def _x_for_y(self, y):
+        """
+        Returns the x value for some input y value considering the line formed by the edge
+        :param y: float
+        :return: float
+        """
+        return (y - self.y_intercept()) / float(self.slope())
+
 
     def midpoint(self):
         return (self.point1 + self.point2) / 2
