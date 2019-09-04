@@ -4,13 +4,29 @@ from .Services import orientation
 
 
 class Polygon:
+    """
+    Class for Polygons. Polygons can be thought of as a ordered list of points. (Meaning, the first point is connected to
+    the second point, the second point is connected to the third and so on, and finally the last point is connected to
+    the first.
+
+    Polygons can be accessed as a list. For example, the first point og Polygon p can be accessed using p[0].
+    """
     def __init__(self, point_array):
         self.points = [Point(point) for point in point_array]
 
     def flip(self):
+        """
+        Flips the order of the polygon. That is, the last point becomes the first, the second last point becomes
+        the second point and so on.
+        :return: Polygon
+        """
         return self.__class__(self.points[::-1])
 
     def simplify(self):
+        """
+        Removes all the collinear and duplicate points from the polygon.
+        :return: Polygon
+        """
         def are_collinear(x, y, z):
             if (x.x * (y.y - z.y) + y.x * (z.y - x.y) + z.x * (x.y - y.y)) == 0:
                 return True
@@ -20,19 +36,32 @@ class Polygon:
         for i in range(len(self.points)):
             if are_collinear(new_points[(i - 1) % len(new_points)], new_points[i % len(new_points)], new_points[(i + 1) % len(new_points)]):
                 del new_points[i]
-        self.points = new_points
+        return self.__class__(new_points)
 
     def is_clockwise(self):
+        """
+        Returns true if the order of the points in the polygon is clockwise.
+        :return: bool
+        """
         if orientation(self.points[0], self.points[1], self.points[2]) == 1:
             return True
         return False
 
     def is_anticlockwise(self):
+        """
+        Returns true if the order of the points in the polygon is anti clockwise.
+        :return: bool
+        """
         if orientation(self.points[0], self.points[1], self.points[2]) == 2:
             return True
         return False
 
     def contains(self, point):
+        """
+        Checks if the point lies inside the polygon.
+        :param point: Point
+        :return: bool
+        """
         infinity = Point(self.max_x() + 1, point.y)
         count = 0
 
@@ -48,15 +77,31 @@ class Polygon:
         return count % 2 == 1
 
     def max_x(self):
+        """
+        Returns the maximum x coordinate of the polygon.
+        :return: float
+        """
         return max(point.x for point in self.points)
 
     def min_x(self):
+        """
+        Returns the minimum x coordinate of the polygon.
+        :return: float
+        """
         return min(point.x for point in self.points)
 
     def max_y(self):
+        """
+        Returns the maximum y coordinate of the polygon.
+        :return: float
+        """
         return max(point.y for point in self.points)
 
     def min_y(self):
+        """
+        Returns the minimum y coordinate of the polygon.
+        :return:
+        """
         return min(point.y for point in self.points)
 
     def __repr__(self):
