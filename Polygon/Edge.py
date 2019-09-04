@@ -52,6 +52,9 @@ class Edge:
             return 'inf'
         return (-self.slope() * self.point1.x) + self.point1.y
 
+    def line_coeff(self):
+        return {'slope': self.slope(), 'y_intercept': self.y_intercept()}
+
     def midpoint(self):
         return (self.point1 + self.point2) / 2
 
