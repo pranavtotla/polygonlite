@@ -19,19 +19,23 @@ class Edge:
 
     def length(self):
         """
-        Returns the length of the Edge.
+        Returns the length of the edge.
         :return: float
         """
         return math.sqrt(self.vector().square().sum())
 
     def vector(self):
         """
-        Returns the vector representation of the Edge.
+        Returns the vector representation of the edge.
         :return: Point
         """
         return Point(self.point2 - self.point1)
 
     def unit_vector(self):
+        """
+        Returns the unit vector in the direction of the edge.
+        :return: Point
+        """
         return self.vector() / self.length()
 
     def slope(self):
@@ -59,6 +63,78 @@ class Edge:
         """
         return {'slope': self.slope(), 'y_intercept': self.y_intercept()}
 
+    def midpoint(self):
+        """
+        Returns the mid point of the edge.
+        :return: Point
+        """
+        return (self.point1 + self.point2) / 2
+
+    def angle_between(self, other, radians=False):
+        """
+        Returns the angle between the two edges, in degrees by default.
+        :param other: Edge
+        :param radians: bool
+        :return: float
+        """
+        dot_product = dot(self.vector(), other.vector())
+        if dot_product != 0:
+            normalized_product = float(dot_product) / (float(self.length()) * float(other.length()))
+        else:
+            normalized_product = dot_product
+
+        if radians:
+            return math.acos(normalized_product)
+        return float(math.acos(normalized_product)) * 180 / math.pi
+
+    def is_parallel(self, other):
+        """
+        Returns true if the two edges are parallel.
+        :param other: Edge
+        :return: bool
+        """
+        if (self.slope() - other.slope()) < THRESHOLD:
+            return True
+        return False
+
+    def is_between(self, point):
+        """
+        To be deprecated. Use on_segment.
+        Returns true if the point lies on the edge.
+        :param point: Point
+        :return: bool
+        """
+        if is_between(self.point1.x, point.x, self.point2.x):
+            if is_between(self.point1.y, point.y, self.point2.y):
+                return True
+        return False
+
+    def on_segment(self, point):
+        """
+        Returns true if the point lies on the edge.
+        :param point: Point
+        :return: bool
+        """
+        # return point.x <= max(self.point1.x, self.point2.x) and point.x >= min(self.point1.x, self.point2.x) and point.y <= max(self.point1.y, self.point2.y) and point.y >= min(self.point1.y, self.point2.y)
+        # return max(self.point1.x, self.point2.x) >= point.x >= min(self.point1.x, self.point2.x) and point.y <= max(self.point1.y, self.point2.y) and point.y >= min(self.point1.y, self.point2.y)
+        return max(self.point1.x, self.point2.x) >= point.x >= min(self.point1.x, self.point2.x) and max(self.point1.y,self.point2.y) >= point.y >= min(self.point1.y, self.point2.y)
+
+    def intersect(self, other):
+        """
+        Returns the intersection point of two edges (line segments, not lines).
+        Returns 'collinear' if the edges are collinear (again, line segments, not lines).
+        Returns None if the edges are parallel.
+        :param other: Edge
+        :return: union(Point, string, None)
+        """
+        if self.on_segment(other.point1) or self.on_segment(other.point2):
+            return 'collinear'
+        intersection = self.intersect_lines(self, other)
+        if intersection:
+            if self.on_segment(intersection):
+                return Point(intersection)
+        return None
+
     def _y_for_x(self, x):
         """
         Returns the y value for some input x value considering the line formed by the edge.
@@ -71,59 +147,13 @@ class Edge:
 
     def _x_for_y(self, y):
         """
-        Returns the x value for some input y value considering the line formed by the edge
+        Returns the x value for some input y value considering the line formed by the edge.
         :param y: float
         :return: float
         """
         if self.slope() == 0:
             return None
         return (y - self.y_intercept()) / float(self.slope())
-
-    def midpoint(self):
-        return (self.point1 + self.point2) / 2
-
-    def angle_between(self, other, radians=False):
-        dot_product = dot(self.vector(), other.vector())
-        if dot_product != 0:
-            normalized_product = float(dot_product) / (float(self.length()) * float(other.length()))
-        else:
-            normalized_product = dot_product
-
-        if radians:
-            return math.acos(normalized_product)
-        return math.acos(normalized_product) * 180 / math.pi
-
-    def is_parallel(self, other):
-        if (self.slope() - other.slope()) < THRESHOLD:
-            return True
-        return False
-
-    def is_between(self, point):
-        if is_between(self.point1.x, point.x, self.point2.x):
-            if is_between(self.point1.y, point.y, self.point2.y):
-                return True
-        return False
-
-    def on_segment(self, point):
-        # return point.x <= max(self.point1.x, self.point2.x) and point.x >= min(self.point1.x, self.point2.x) and point.y <= max(self.point1.y, self.point2.y) and point.y >= min(self.point1.y, self.point2.y)
-        # return max(self.point1.x, self.point2.x) >= point.x >= min(self.point1.x, self.point2.x) and point.y <= max(self.point1.y, self.point2.y) and point.y >= min(self.point1.y, self.point2.y)
-        return max(self.point1.x, self.point2.x) >= point.x >= min(self.point1.x, self.point2.x) and max(self.point1.y,self.point2.y) >= point.y >= min(self.point1.y, self.point2.y)
-
-    def intersect(self, other):
-        """
-        Returns the intersection point of two edges (line segments, not lines).
-        Returns 'collinear' if the edges are collinear (again, line segments, not lines)
-        Returns None if the edges are parallel.
-        :param other: Edge
-        :return: union(Point, string, None)
-        """
-        if self.on_segment(other.point1) or self.on_segment(other.point2):
-            return 'collinear'
-        intersection = self.intersect_lines(self, other)
-        if intersection:
-            if self.on_segment(intersection):
-                return Point(intersection)
-        return None
 
     @staticmethod
     def intersect_lines(line1, line2):
