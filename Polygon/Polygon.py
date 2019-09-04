@@ -18,7 +18,6 @@ class Polygon:
 
         new_points = self.points[:]
         for i in range(len(self.points)):
-            print (i - 1) % len(new_points), i,  (i + 1) % len(new_points)
             if are_collinear(new_points[(i - 1) % len(new_points)], new_points[i % len(new_points)], new_points[(i + 1) % len(new_points)]):
                 del new_points[i]
         self.points = new_points
