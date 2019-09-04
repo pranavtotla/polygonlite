@@ -13,11 +13,6 @@ class Point:
     3. p['x'], p['y']
     """
     def __init__(self, *args, **kwargs):
-        """
-        Create a new Point object.
-        :param args:
-        :param kwargs:
-        """
         if len(args) == 1:
             self.point = args[0]
             self.x = self.point[0]
