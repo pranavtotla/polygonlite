@@ -52,8 +52,6 @@ class Edge:
             return 'inf'
         return (-self.slope() * self.point1.x) + self.point1.y
 
-
-
     def midpoint(self):
         return (self.point1 + self.point2) / 2
 
