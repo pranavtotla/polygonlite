@@ -89,6 +89,12 @@ class SinglyLinkedList:
             curr = curr.next
         return '[' + ','.join(nodes) + ']'
 
+    def __getitem__(self, item):
+        curr = self.head
+        for i in range(item):
+            curr = curr.next
+        return curr
+
     def to_array(self):
         nodes = []
         curr = self.head
