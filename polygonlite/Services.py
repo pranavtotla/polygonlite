@@ -95,6 +95,15 @@ class SinglyLinkedList:
             curr = curr.next
         return curr
 
+    def __setitem__(self, key, value):
+        if key == 0:
+            self.head = Node(data=value, next=self.head.next)
+            return
+        prev = self.head
+        for i in range(key - 1):
+            prev = prev.next
+        prev.next = Node(data=value, next=prev.next.next)
+
     def to_array(self):
         nodes = []
         curr = self.head
