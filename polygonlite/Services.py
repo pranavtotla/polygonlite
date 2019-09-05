@@ -22,3 +22,77 @@ def orientation(p, q, r):
     if val > 0: return 1  # Clockwise
     return 2  # Anti clockwise
 
+
+class Node:
+    def __init__(self, data=None, next=None):
+        self.data = data
+        self.next = next
+        self.intersection = None
+
+    def __repr__(self):
+        return repr(self.data)
+
+
+class SinglyLinkedList:
+    def __init__(self):
+        self.head = None
+
+    def size(self):
+        count = 0
+        current = self.head
+        while current is not None:
+            count += 1
+            current = current.next
+        return count
+
+    def append(self, data):
+        if not self.head:
+            self.head = Node(data=data)
+            return
+        curr = self.head
+        while curr.next:
+            curr = curr.next
+        curr.next = Node(data=data)
+
+    def prepend(self, data):
+        self.head = Node(data=data, next=self.head)
+
+    def insert(self, data, prev):
+        if self.find(prev):
+            prev = self.find(prev)
+            node = Node(data=data, next=prev.next)
+            prev.next = node
+
+    def remove(self, data):
+        curr = self.head
+        prev = None
+        while curr and curr.data != data:
+            prev = curr
+            curr = curr.next
+        if prev is None:
+            self.head = curr.next
+        elif curr:
+            prev.next = curr.next
+            curr.next = None
+
+    def find(self, data):
+        curr = self.head
+        while curr and curr.data != data:
+            curr = curr.next
+        return curr
+
+    def __repr__(self):
+        nodes = []
+        curr = self.head
+        while curr:
+            nodes.append(repr(curr))
+            curr = curr.next
+        return '[' + ','.join(nodes) + ']'
+
+    def to_array(self):
+        nodes = []
+        curr = self.head
+        while curr:
+            nodes.append(curr.data)
+            curr = curr.next
+        return nodes
