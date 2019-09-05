@@ -1,6 +1,6 @@
 from .Point import Point
 from .Edge import Edge
-from .Services import orientation
+from .Services import orientation, SinglyLinkedList, Node
 
 
 class Polygon:
@@ -11,6 +11,8 @@ class Polygon:
 
     Polygons can be accessed as a list. For example, the first point og Polygon p can be accessed using p[0].
     """
+    points = None
+
     def __init__(self, point_array):
         self.points = [Point(point) for point in point_array]
 
@@ -103,6 +105,13 @@ class Polygon:
         :return:
         """
         return min(point.y for point in self.points)
+
+    def to_linked_list(self):
+        simplified = self.simplify()
+        linked_list = SinglyLinkedList()
+        for i in range(len(simplified.points)):
+            linked_list.append(simplified.points[i])
+        return linked_list
 
     def __repr__(self):
         return str(self.points)
