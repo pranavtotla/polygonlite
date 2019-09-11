@@ -86,6 +86,11 @@ class SinglyLinkedList:
             curr = curr.next
         return curr
 
+    def is_empty(self):
+        if self.head is not None:
+            return True
+        return False
+
     def __repr__(self):
         nodes = []
         curr = self.head
