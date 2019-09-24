@@ -133,6 +133,16 @@ class Edge:
                 return Point(intersection)
         return None
 
+    def project_point(self, point):
+        """
+        Projects the given point on the Edge.
+        :param point: Point
+        :return: Point
+        """
+        vector = self.unit_vector()
+        edge_to_point = point - self.point1
+        return self.point1 + (vector * dot(edge_to_point, vector))
+
     def _y_for_x(self, x):
         """
         Returns the y value for some input x value considering the line formed by the edge.
