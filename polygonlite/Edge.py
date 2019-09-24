@@ -115,8 +115,6 @@ class Edge:
         :param point: Point
         :return: bool
         """
-        # return point.x <= max(self.point1.x, self.point2.x) and point.x >= min(self.point1.x, self.point2.x) and point.y <= max(self.point1.y, self.point2.y) and point.y >= min(self.point1.y, self.point2.y)
-        # return max(self.point1.x, self.point2.x) >= point.x >= min(self.point1.x, self.point2.x) and point.y <= max(self.point1.y, self.point2.y) and point.y >= min(self.point1.y, self.point2.y)
         return max(self.point1.x, self.point2.x) >= point.x >= min(self.point1.x, self.point2.x) and max(self.point1.y,self.point2.y) >= point.y >= min(self.point1.y, self.point2.y)
 
     def intersect(self, other):
