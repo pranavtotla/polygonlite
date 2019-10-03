@@ -207,6 +207,9 @@ class Edge:
                         return True
         return False
 
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
     def __getitem__(self, key):
         if (key == 0) or (key == 'point1') or (key == 'pt1'):
             return self.point1
