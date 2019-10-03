@@ -1,7 +1,6 @@
 import math
 from .Point import Point, THRESHOLD
 from .Services import dot, det, is_between
-THRESHOLD = 0.000001
 
 class Edge:
     """
