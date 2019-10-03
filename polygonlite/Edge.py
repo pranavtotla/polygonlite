@@ -199,7 +199,8 @@ class Edge:
         return 2
 
     def __eq__(self, other):
-        if not isinstance(other, Edge): return False
+        if not isinstance(other, Edge):
+            return False
         if (self.point1.x - other.point1.x) < THRESHOLD:
             if (self.point1.y - other.point1.y) < THRESHOLD:
                 if (self.point2.x - other.point2.x) < THRESHOLD:
