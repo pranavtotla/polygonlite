@@ -1,6 +1,6 @@
 from .Services import dot
 import math
-THRESHOLD = 0.000001
+from .config import THRESHOLD
 
 
 class Point:

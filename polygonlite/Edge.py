@@ -1,6 +1,8 @@
 import math
-from .Point import Point, THRESHOLD
-from .Services import dot, det, is_between
+from .Point import Point
+from .Services import dot, is_between
+from .config import THRESHOLD
+
 
 class Edge:
     """
