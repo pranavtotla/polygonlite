@@ -1,6 +1,7 @@
 import math
-from .Point import Point, THRESHOLD
-from .Services import dot, det, is_between
+from .Point import Point
+from .Services import dot, is_between
+from .config import THRESHOLD
 
 
 class Edge:
@@ -197,6 +198,17 @@ class Edge:
 
     def __len__(self):
         return 2
+
+    def __eq__(self, other):
+        if not isinstance(other, Edge):
+            return False
+        if (self.point1.x - other.point1.x) < THRESHOLD and (self.point1.y - other.point1.y) < THRESHOLD:
+            if (self.point2.x - other.point2.x) < THRESHOLD and (self.point2.y - other.point2.y) < THRESHOLD:
+                return True
+        return False
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
 
     def __getitem__(self, key):
         if (key == 0) or (key == 'point1') or (key == 'pt1'):
