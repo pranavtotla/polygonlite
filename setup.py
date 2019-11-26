@@ -7,7 +7,7 @@ setup(
     url='https://github.com/pranavtotla/polygonlite',
     license='MIT',
     author='Pranav Totla',
-    author_email='',
+    author_email='pranav@totla.tech',
     description='A lightweight module for polygon, edge and point operations.',
     classifiers=[
         'Development Status :: 3 - Alpha',
