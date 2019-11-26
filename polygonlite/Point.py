@@ -75,6 +75,9 @@ class Point:
         edge_to_point = self - edge.point1
         return edge.point1 + (vector * dot(edge_to_point, vector))
 
+    def as_array(self):
+        return self.point
+
     def __repr__(self):
         return str([self.x, self.y])
 
