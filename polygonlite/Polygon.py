@@ -78,6 +78,9 @@ class Polygon:
 
         return count % 2 == 1
 
+    def as_array(self):
+        return [point.as_array() for point in self.points]
+
     def max_x(self):
         """
         Returns the maximum x coordinate of the polygon.
