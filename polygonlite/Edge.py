@@ -144,6 +144,9 @@ class Edge:
         edge_to_point = point - self.point1
         return self.point1 + (vector * dot(edge_to_point, vector))
 
+    def as_array(self):
+        return [self.point1.as_array(), self.point2.as_array()]
+
     def _y_for_x(self, x):
         """
         Returns the y value for some input x value considering the line formed by the edge.
