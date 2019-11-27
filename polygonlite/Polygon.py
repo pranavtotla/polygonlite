@@ -116,6 +116,9 @@ class Polygon:
             linked_list.append(simplified.points[i])
         return linked_list
 
+    def area(self):
+        return abs(self._signed_area())
+
     def _signed_area(self):
         area = 0.0
         n = len(self.points)
