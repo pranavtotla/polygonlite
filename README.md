@@ -8,27 +8,51 @@ polygonlite is a lighweight, yet powerful (um, robust?) library for the usual Po
 
 # New Features!
 
+  - polygon.area()
+
+
+# Features
+
+On Polygon objects, you can:
   - polygon.contains(point)
-  - edge.intersect(anotherEdge)
+  - polygon.flip()
+  - polygon.simplify()
+  - polygon.area()
+  - polygon.is_clockwise()
+  - polygon.is_anticlockwise()
+  - polygon.as_array()
+  - polygon.as_linked_list()
+
 
 
 On Edge objects, you can:
   - edge.angle_between(anotherEdge)
   - edge.is_parallel(anotherEdge)
+  - edge.intersect(anotherEdge)
   - edge.on_segment(point)
+  - edge.project_point(point)
   - edge.slope()
   - edge.length()
   - edge.vector()
+  - edge.unit_vector()
+  - edge.y_intercept()
+  - edge.midpoint()
+  - edge.as_array()
 
 
 
 On Point objects, you can:
   - point.distance(anotherPoint)
   - point.project(edge)
+  - point.as_array()
  
 
 More methods are coming soon, and examples will also be updated soon.
 
+
+## Fixes
+
+ - polygon.is_clockwise() and polygon.is_anticlockwise() now work even for concave polygons.
 
 ## Installation
 
