@@ -114,6 +114,10 @@ class Polygon:
         return min(point.y for point in self.points)
 
     def to_linked_list(self):
+        """
+        Gives a singly linked list of the polygon points.
+        :return: SinglyLinkedList
+        """
         simplified = self.simplify()
         linked_list = SinglyLinkedList()
         for i in range(len(simplified.points)):
