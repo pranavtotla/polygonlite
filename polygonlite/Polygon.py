@@ -116,6 +116,15 @@ class Polygon:
             linked_list.append(simplified.points[i])
         return linked_list
 
+    def _signed_area(self):
+        area = 0.0
+        n = len(self.points)
+        for i in range(n):
+            j = (i + 1) % n
+            area += self.points[i][0] * self.points[j][1]
+            area -= self.points[j][0] * self.points[i][1]
+        return area / 2.0
+
     def __repr__(self):
         return str(self.points)
 
