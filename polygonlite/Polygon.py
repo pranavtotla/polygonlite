@@ -132,6 +132,11 @@ class Polygon:
         return abs(self._signed_area())
 
     def _signed_area(self):
+        """
+        Calculates the area of the polygon. If the order is anti clockwise, the result is
+        positive, otherwise it is negative.
+        :return: float
+        """
         area = 0.0
         n = len(self.points)
         for i in range(n):
