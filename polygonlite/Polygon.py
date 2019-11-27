@@ -125,6 +125,10 @@ class Polygon:
         return linked_list
 
     def area(self):
+        """
+        Gives area of the polygon.
+        :return: float
+        """
         return abs(self._signed_area())
 
     def _signed_area(self):
