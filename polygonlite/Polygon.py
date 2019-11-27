@@ -79,6 +79,10 @@ class Polygon:
         return count % 2 == 1
 
     def as_array(self):
+        """
+        Gives the polygon as a list of points, which in turn are a list of numbers.
+        :return: list
+        """
         return [point.as_array() for point in self.points]
 
     def max_x(self):
