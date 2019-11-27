@@ -45,7 +45,7 @@ class Polygon:
         Returns true if the order of the points in the polygon is clockwise.
         :return: bool
         """
-        if orientation(self.points[0], self.points[1], self.points[2]) == 1:
+        if self._signed_area() < 0:
             return True
         return False
 
