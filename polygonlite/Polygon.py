@@ -30,9 +30,7 @@ class Polygon:
         :return: Polygon
         """
         def are_collinear(x, y, z):
-            if (x.x * (y.y - z.y) + y.x * (z.y - x.y) + z.x * (x.y - y.y)) == 0:
-                return True
-            return False
+            return (x.x * (y.y - z.y) + y.x * (z.y - x.y) + z.x * (x.y - y.y)) == 0
 
         new_points = self.points[:]
         for i in range(len(self.points)):
