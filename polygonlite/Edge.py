@@ -94,9 +94,7 @@ class Edge:
         :param other: Edge
         :return: bool
         """
-        if (self.slope() - other.slope()) < THRESHOLD:
-            return True
-        return False
+        return (self.slope() - other.slope()) < THRESHOLD
 
     def is_between(self, point):
         """
