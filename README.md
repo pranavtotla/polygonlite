@@ -104,7 +104,7 @@ origin_lies_on_edge = edge1.on_segment(origin)
 length_of_edge1 = edge1.length()
 vector_of_edge1 = edge1.vector()
 slope_of_edge1 = edge1.slope()
-mid_of_edge1 = edge1.midpoint(0)
+mid_of_edge1 = edge1.midpoint()
 ```
 
 
