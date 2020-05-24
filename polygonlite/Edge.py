@@ -41,7 +41,7 @@ class Edge:
 
     def slope(self):
         """
-        Returns the slope of the line made by the edge, returns "inf" if slope is infinity.
+        Returns the slope of the line made by the edge. (By the way, slope is infinity for vertical edges)
         :return: union([float, string])
         """
         if self.point2.x - self.point1.x < THRESHOLD:
@@ -50,7 +50,7 @@ class Edge:
 
     def y_intercept(self):
         """
-        Returns the y intercept formed by the line defined by the edge. Returns 'inf' line is parallel to y axis.
+        Returns the y intercept formed by the line defined by the edge. Returns infinity line is parallel to y axis.
         :return: union([float, string])
         """
         if self.slope() == float('inf'):
