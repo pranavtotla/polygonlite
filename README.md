@@ -1,6 +1,8 @@
+[![Downloads](https://pepy.tech/badge/polygonlite)](https://pepy.tech/project/polygonlite)
+
 # polygonlite
 
-polygonlite is a lighweight, yet powerful (um, robust?) library for the usual Point, Edge and Polygon operations in Python.
+polygonlite is a lightweight, yet powerful (um, robust?) library for the usual Point, Edge and Polygon operations in Python.
 
   - Point class which encompasses methods like project on edge, etc.
   - Edge class which has more powerful features like angle between edges, intersection of edges, etc.
