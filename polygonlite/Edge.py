@@ -45,7 +45,7 @@ class Edge:
         :return: union([float, string])
         """
         if self.point2.x - self.point1.x < THRESHOLD:
-            return 'inf'
+            return float('inf')
         return (self.point2.y - self.point1.y) / (self.point2.x - self.point1.x)
 
     def y_intercept(self):
@@ -53,8 +53,8 @@ class Edge:
         Returns the y intercept formed by the line defined by the edge. Returns 'inf' line is parallel to y axis.
         :return: union([float, string])
         """
-        if self.slope() == 'inf':
-            return 'inf'
+        if self.slope() == float('inf'):
+            return float('inf')
         return (-self.slope() * self.point1.x) + self.point1.y
 
     def line_coeff(self):
@@ -151,7 +151,7 @@ class Edge:
         :param x: float
         :return: float
         """
-        if self.slope() == 'inf':
+        if self.slope() == float('inf'):
             return None
         return self.slope() * x + self.y_intercept()
 
