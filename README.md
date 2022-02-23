@@ -1,4 +1,4 @@
-[![Downloads](https://pepy.tech/badge/polygonlite)](https://pepy.tech/project/polygonlite)
+[![Downloads](https://pepy.tech/badge/polygonlite)](https://pepy.tech/project/polygonlite) + [![Downloads](https://pepy.tech/badge/polygon-lite)](https://pepy.tech/project/polygon-lite)
 
 # polygonlite
 
